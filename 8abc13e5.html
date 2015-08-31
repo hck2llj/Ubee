@@ -193,13 +193,14 @@
             client.publish(topic, commond);
         }
         // document.querySelector('#led_on').addEventListener('touchstart', led_on);
-        document.querySelector('#led_on').addEventListener('click', led_on);
+        document.querySelector('#motor_on').addEventListener('click', motor_on);
 
         function motor_off() {
             var topic = device_id+'/in/write';
             var commond = '{"rgbled_motor":false}';
             client.publish(topic, commond);
         }
+		document.querySelector('#motor_off').addEventListener('click', motor_off);
     }
 
     // 日志打印在页面的部分    
