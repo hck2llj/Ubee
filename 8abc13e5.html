@@ -49,8 +49,9 @@
      <a class="button" style="background:green; color:white" id="led_green">Green</a>
      <a class="button" style="background:blue; color:white" id="led_blue">Blue</a>
  </div>
-  <div class="button-bar">
-     <a class="button" style="background:yellow; color:white" id="led_move">Move</a>
+ <div class="button-bar">
+     <a class="button" style="background:green; color:white" id="motor_on">On</a>
+     <a class="button" style="background:red; color:white" id="motor_off">Off</a>
  </div>
  <div class="button-bar">
      <a class="button" style="background:white; color:black" id="led_on">On</a>
@@ -186,13 +187,19 @@
         // document.querySelector('#led_blue').addEventListener('touchstart', led_blue);
         document.querySelector('#led_blue').addEventListener('click', led_blue);
 		
-		function led_move() {
+		function motor_on() {
             var topic = device_id+'/in/write';
-            var commond = '{"rgbled_switch":true,"rgbled_hues":100, "rgbled_saturation":120, "rgbled_brightness":100}'; 
+            var commond = '{"rgbled_motor":true}';
             client.publish(topic, commond);
         }
-        // document.querySelector('#led_move').addEventListener('touchstart', led_move);
-        document.querySelector('#led_move').addEventListener('click', led_move);
+        // document.querySelector('#led_on').addEventListener('touchstart', led_on);
+        document.querySelector('#led_on').addEventListener('click', led_on);
+
+        function motor_off() {
+            var topic = device_id+'/in/write';
+            var commond = '{"rgbled_motor":false}';
+            client.publish(topic, commond);
+        }
     }
 
     // 日志打印在页面的部分    
