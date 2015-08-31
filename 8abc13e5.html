@@ -45,9 +45,12 @@
  </div>
 
  <div class="button-bar">
-     <a class="button" style="background:red; color:white" id="led_red">UbeeRed</a>
-     <a class="button" style="background:green; color:white" id="led_green">UbeeGreen</a>
-     <a class="button" style="background:blue; color:white" id="led_blue">UbeeBlue</a>
+     <a class="button" style="background:red; color:white" id="led_red">Red</a>
+     <a class="button" style="background:green; color:white" id="led_green">Green</a>
+     <a class="button" style="background:blue; color:white" id="led_blue">Blue</a>
+ </div>
+  <div class="button-bar">
+     <a class="button" style="background:yellow; color:white" id="led_move">Move</a>
  </div>
  <div class="button-bar">
      <a class="button" style="background:white; color:black" id="led_on">On</a>
@@ -182,6 +185,14 @@
         }
         // document.querySelector('#led_blue').addEventListener('touchstart', led_blue);
         document.querySelector('#led_blue').addEventListener('click', led_blue);
+		
+		function led_move() {
+            var topic = device_id+'/in/write';
+            var commond = '{"rgbled_switch":true,"rgbled_hues":360, "rgbled_saturation":100, "rgbled_brightness":100}'; 
+            client.publish(topic, commond);
+        }
+        // document.querySelector('#led_move').addEventListener('touchstart', led_move);
+        document.querySelector('#led_move').addEventListener('click', led_move);
     }
 
     // 日志打印在页面的部分    
