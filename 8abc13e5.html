@@ -188,7 +188,7 @@
 		
 		function led_move() {
             var topic = device_id+'/in/write';
-            var commond = '{"rgbled_switch":true,"rgbled_hues":360, "rgbled_saturation":100, "rgbled_brightness":100}'; 
+            var commond = '{"rgbled_switch":true,"rgbled_hues":100, "rgbled_saturation":120, "rgbled_brightness":100}'; 
             client.publish(topic, commond);
         }
         // document.querySelector('#led_move').addEventListener('touchstart', led_move);
