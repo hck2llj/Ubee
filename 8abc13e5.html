@@ -43,22 +43,25 @@
          Uart
      </button>
  </div>
- <div class="scroll-bar">
-     <a class="scroll" style="width:33px; overflow:scroll; overflow-x:hidden" id="motor_on">left</a>
- </div>
  <div class="button-bar">
      <a class="button" style="background:red; color:white" id="led_red">Red</a>
      <a class="button" style="background:green; color:white" id="led_green">Green</a>
      <a class="button" style="background:blue; color:white" id="led_blue">Blue</a>
  </div>
- 
  <div class="button-bar">
-     <a class="button" style="background:red; color:white" id="motor_off">Off</a>
+     <a class="button" style="background:white; color:black" id="led_on">RGBLED On</a>
+     <a class="button" style="background:black; color:white" id="led_off">RGBLED Off</a>
  </div>
- 
  <div class="button-bar">
-     <a class="button" style="background:white; color:black" id="led_on">On</a>
-     <a class="button" style="background:black; color:white" id="led_off">Off</a>
+     <a class="button" style="background:white; color:black" id="CarRLedOn">R</a>
+	 <a class="button" style="background:white; color:black" id="CarLedOff">OFF</a>
+     <a class="button" style="background:white; color:black" id="CarRLedOn">L</a>
+ </div>
+ <div class="button-bar">
+	 <a class="button" style="background:green; color:white" id="CarTurnRight">Right</a>
+	 <a class="button" style="background:yellow; color:white" id="CarSpeedUp">SpeedUp</a>
+     <a class="button" style="background:purple; color:white" id="CarSpeedDown">SpeedDown</a>
+     <a class="button" style="background:red; color:white" id="CarTurnLeft">Left</a>
  </div>
 </div>
 
@@ -190,20 +193,55 @@
         // document.querySelector('#led_blue').addEventListener('touchstart', led_blue);
         document.querySelector('#led_blue').addEventListener('click', led_blue);
 		
-		function motor_on() {
+		function CarTurnRight() {
             var topic = device_id+'/in/write';
-            var commond = '{"rgbled_motor":true}';
+            var commond = '{"car_status":1}';
             client.publish(topic, commond);
         }
         // document.querySelector('#led_on').addEventListener('touchstart', led_on);
-        document.querySelector('#motor_on').addEventListener('click', motor_on);
+        document.querySelector('#CarTurnRight').addEventListener('click', CarTurnRight);
 
-        function motor_off() {
+        function CarSpeedUp() {
             var topic = device_id+'/in/write';
-            var commond = '{"rgbled_motor":false}';
+            var commond = '{"car_status":2}';
             client.publish(topic, commond);
         }
-		document.querySelector('#motor_off').addEventListener('click', motor_off);
+		document.querySelector('#CarSpeedUp').addEventListener('click', CarSpeedUp);
+		
+		function CarSpeedDown() {
+            var topic = device_id+'/in/write';
+            var commond = '{"car_status":3}';
+            client.publish(topic, commond);
+        }
+		document.querySelector('#CarSpeedDown').addEventListener('click', CarSpeedDown);
+		
+		function CarTurnLeft() {
+            var topic = device_id+'/in/write';
+            var commond = '{"car_status":4}';
+            client.publish(topic, commond);
+        }
+		document.querySelector('#CarTurnLeft').addEventListener('click', CarTurnLeft);
+		
+		function CarRLedOn() {
+            var topic = device_id+'/in/write';
+            var commond = '{"carled_status":1}';
+            client.publish(topic, commond);
+        }
+		document.querySelector('#CarRLedOn').addEventListener('click', CarRLedOn);
+		
+		function CarLedOff() {
+            var topic = device_id+'/in/write';
+            var commond = '{"carled_status":0}';
+            client.publish(topic, commond);
+        }
+		document.querySelector('#CarLedOff').addEventListener('click', CarLedOff);
+		
+		function CarLLedOn() {
+            var topic = device_id+'/in/write';
+            var commond = '{"carled_status":2}';
+            client.publish(topic, commond);
+        }
+		document.querySelector('#CarLLedOn').addEventListener('click', CarLLedOn);
     }
 
     // 日志打印在页面的部分    
