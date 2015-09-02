@@ -43,16 +43,19 @@
          Uart
      </button>
  </div>
-
+ <div class="scroll-bar">
+     <a class="scroll" style="width:33px; overflow:scroll; overflow-x:hidden" id="motor_on">left</a>
+ </div>
  <div class="button-bar">
      <a class="button" style="background:red; color:white" id="led_red">Red</a>
      <a class="button" style="background:green; color:white" id="led_green">Green</a>
      <a class="button" style="background:blue; color:white" id="led_blue">Blue</a>
  </div>
+ 
  <div class="button-bar">
-     <a class="button" style="background:green; color:white" id="motor_on">On</a>
      <a class="button" style="background:red; color:white" id="motor_off">Off</a>
  </div>
+ 
  <div class="button-bar">
      <a class="button" style="background:white; color:black" id="led_on">On</a>
      <a class="button" style="background:black; color:white" id="led_off">Off</a>
@@ -193,14 +196,14 @@
             client.publish(topic, commond);
         }
         // document.querySelector('#led_on').addEventListener('touchstart', led_on);
-        document.querySelector('#motor_on').addEventListener('touchstart', motor_on);
+        document.querySelector('#motor_on').addEventListener('click', motor_on);
 
         function motor_off() {
             var topic = device_id+'/in/write';
             var commond = '{"rgbled_motor":false}';
             client.publish(topic, commond);
         }
-		document.querySelector('#motor_off').addEventListener('touchstart', motor_off);
+		document.querySelector('#motor_off').addEventListener('click', motor_off);
     }
 
     // 日志打印在页面的部分    
